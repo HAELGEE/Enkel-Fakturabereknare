@@ -13,22 +13,22 @@ public class Program
         Console.WriteLine($"Customer: {invoice.Name}");
         Console.WriteLine($"Product: {invoice.Product}");
         Console.WriteLine($"Total products: {invoice.TotalProducts}");
-        Console.WriteLine($"Price per product: {invoice.PriceOfProduct}sek");
-        Console.WriteLine($"Total Price exk tax: {invoice.PriceWithOutTaxes}sek");
-        Console.WriteLine($"Taxes (25%): {invoice.Taxes}sek");
-        Console.WriteLine($"Total Price ink tax: {invoice.PriceWithTaxes}sek");
+        Console.WriteLine($"Price per product: {invoice.PriceOfProduct:C}");
+        Console.WriteLine($"Total Price exk tax: {invoice.PriceWithOutTaxes:C}");
+        Console.WriteLine($"Taxes (25%): {invoice.Taxes:C}");
+        Console.WriteLine($"Total Price ink tax: {invoice.PriceWithTaxes:C}");
 
     }
 }
 public class Invoice
 {
-    public string? Name;
-    public string? Product;
-    public int TotalProducts;
-    public double PriceOfProduct;
-    public double Taxes;
-    public double PriceWithTaxes;
-    public double PriceWithOutTaxes;
+    public string? Name {  get; set; }
+    public string? Product { get; set; }
+    public int TotalProducts { get; set; }
+    public double PriceOfProduct { get; set; }
+    public double Taxes { get; set; }
+    public double PriceWithTaxes { get; set; }
+    public double PriceWithOutTaxes { get; set; }
     public void NameCheck()
     {
         Console.Write("What's your name?: ");
@@ -45,13 +45,17 @@ public class Invoice
             {
                 Console.Write("\nHow many of that product?: ");
                 TotalProducts = Convert.ToInt32(Console.ReadLine());
+                while (TotalProducts <= 0)
+                {
+                    Console.WriteLine("The number of products must be greater than zero. Please try again.");
+                    TotalProducts = Convert.ToInt32(Console.ReadLine());
+                }
                 Console.Clear();
                 break;
             }
             catch
             {
-                Console.WriteLine("Something went wrong!, maybe you didnt put a whole number in?");
-                Console.WriteLine("Try again");
+                Console.WriteLine("Invalid input! Please enter a valid number.");
             }
         }
     }
@@ -68,8 +72,7 @@ public class Invoice
             }
             catch
             {
-                Console.WriteLine("Something went wrong!, maybe you didnt enter a number?");
-                Console.WriteLine("Try again!");
+                Console.WriteLine("Invalid input! Please enter a valid number.");
             }
         }
 
