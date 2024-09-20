@@ -53,7 +53,7 @@ public class Invoice
                 Console.Clear();
                 break;
             }
-            catch
+            catch(FormatException)
             {
                 Console.WriteLine("Invalid input! Please enter a valid number.");
             }
@@ -70,7 +70,7 @@ public class Invoice
                 Console.Clear();
                 break;
             }
-            catch
+            catch(FormatException)
             {
                 Console.WriteLine("Invalid input! Please enter a valid number.");
             }
