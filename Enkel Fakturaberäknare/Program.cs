@@ -6,6 +6,8 @@ public class Program
     {
         Invoice invoice = new Invoice();
 
+        Console.WriteLine("=== Invoice ===");
+
         invoice.NameCheck();
         invoice.ProductNameCheck();
         invoice.Calculate();
@@ -14,7 +16,7 @@ public class Program
         Console.WriteLine($"Product: {invoice.Product}");
         Console.WriteLine($"Total products: {invoice.TotalProducts}");
         Console.WriteLine($"Price per product: {invoice.PriceOfProduct:C}");
-        Console.WriteLine($"Total Price exk tax: {invoice.PriceWithOutTaxes:C}");
+        Console.WriteLine($"Total Price ex tax: {invoice.PriceWithOutTaxes:C}");
         Console.WriteLine($"Taxes (25%): {invoice.Taxes:C}");
         Console.WriteLine($"Total Price ink tax: {invoice.PriceWithTaxes:C}");
 
@@ -36,7 +38,7 @@ public class Invoice
     }
     public void ProductNameCheck()
     {
-        Console.Write("What is the name of the product?: ");
+        Console.Write("\nWhat is the name of the product?: ");
         Product = Console.ReadLine();
 
         while (true)
